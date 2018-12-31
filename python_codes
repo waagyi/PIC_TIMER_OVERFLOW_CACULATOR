@@ -1,0 +1,27 @@
+print('TIMER DELAY CACULATOR\n')
+"""
+Timer delay caculator
+-------------------------
+	caculate value to be loaded to TMRxL and TMRxH
+"""
+fosc=input('Enter system frequency(eg: 4e6):')
+ps=input('\nEnter prescaler(eg: 1, 2):')
+bit=input('\nEnter bit(eg: 8, 16):')
+res=pow(2,16)-1
+tosc=1.0/fosc
+d=ps*4*tosc
+dt=res*d
+print('\nRESOLUTION (count) = {}'.format(res))
+print('\nWidth of each pulse(with ps) = {}'.format(d))
+print('\nTOTAL DELAY TO OVERFLOW = {}'.format(dt))
+print('\nTMRxL AND TMRxH MUST BE LOADED FOR CUSTOM DELAY')
+print('\n MAXIMUN DELAY TIME MUST BE SHORTER THAN TOTAL DELAY')
+cd=input('\nEnter custom delay time:')
+if cd<dt:
+	cnt=cd/d #count=custom delay/delay of each pulse
+	load_cnt=res-cnt
+	print('\nTotal count for desire delay ={} count'.format(cnt))
+	print('\nValue need to load = {}'.format(load_cnt))
+  x=input('\nPress any key to exit . . . . .')
+
+
