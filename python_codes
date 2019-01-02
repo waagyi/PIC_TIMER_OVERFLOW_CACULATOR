@@ -16,12 +16,13 @@ print('\nWidth of each pulse(with ps) = {}'.format(d))
 print('\nTOTAL DELAY TO OVERFLOW = {}'.format(dt))
 print('\nTMRxL AND TMRxH MUST BE LOADED FOR CUSTOM DELAY')
 print('\n MAXIMUN DELAY TIME MUST BE SHORTER THAN TOTAL DELAY')
-cd=input('\nEnter custom delay time:')
-if cd<dt:
-	cnt=cd/d #count=custom delay/delay of each pulse
-	load_cnt=res-cnt
-	print('\nTotal count for desire delay ={} count'.format(cnt))
-	print('\nValue need to load = {}'.format(load_cnt))
-  x=input('\nPress any key to exit . . . . .')
+cdt=input('\nEnter custom delay time:')
+loading_time=dt-cdt
+print('\n loading time ={}'.format(loading_time))
+loading_count=loading_time/(1.0*d)
+loading_count=int(loading_count)
+loading_count=hex(loading_count)
+print('\n Hex value to be loaded to TMRxL and TMRxH = {}'.format(loading_count))
+x=input('\nPress any key to exit . . . . .')
 
 
